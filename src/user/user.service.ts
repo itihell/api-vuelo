@@ -29,4 +29,16 @@ export class UserService {
   async findOne(id: string): Promise<UserInterface> {
     return await this.model.findById(id);
   }
+
+  async update(id: string, campos: UserDTO): Promise<UserInterface> {
+    const hash = await this.hasPassword(campos.password);
+    const user = { ...campos, password: hash };
+    return await this.model.findByIdAndUpdate(id, user, { new: true });
+  }
+
+  async delete(id: string): Promise<UserInterface> {
+    const user = await this.model.findById(id);
+    await this.model.findByIdAndDelete(id);
+    return user;
+  }
 }
