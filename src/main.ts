@@ -12,6 +12,8 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
 
   const options = new DocumentBuilder()
+
+    .setTermsOfService('Api de vuelo')
     .setTitle('Api de Vuelos')
     .setDescription('Simple aplicacion de vuelos programados')
     .setVersion('1.0.0')
