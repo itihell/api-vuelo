@@ -20,11 +20,13 @@ export class VueloService {
   }
 
   async findOne(id: string): Promise<VueloInterface> {
-    return await this.model.findById(id);
+    return await this.model.findById(id).populate('pasajeros');
   }
 
   async update(id: string, campos: VueloTDO): Promise<VueloInterface> {
-    return await this.model.findByIdAndUpdate(id, campos, { new: true });
+    return await this.model
+      .findByIdAndUpdate(id, campos, { new: true })
+      .populate('pasajeros');
   }
   async delete(id: string): Promise<VueloInterface> {
     const oldVuelo = this.model.findById(id);
