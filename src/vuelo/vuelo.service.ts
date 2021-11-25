@@ -14,4 +14,21 @@ export class VueloService {
     const newVuelo = new this.model(campos);
     return await newVuelo.save();
   }
+
+  async findAll(): Promise<VueloInterface[]> {
+    return await this.model.find();
+  }
+
+  async findOne(id: string): Promise<VueloInterface> {
+    return await this.model.findById(id);
+  }
+
+  async update(id: string, campos: VueloTDO): Promise<VueloInterface> {
+    return await this.model.findByIdAndUpdate(id, campos, { new: true });
+  }
+  async delete(id: string): Promise<VueloInterface> {
+    const oldVuelo = this.model.findById(id);
+    await this.model.findByIdAndDelete(id);
+    return await oldVuelo;
+  }
 }

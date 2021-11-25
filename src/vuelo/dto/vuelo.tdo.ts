@@ -13,5 +13,5 @@ export class VueloTDO {
   @IsNotEmpty()
   @Type(() => Date)
   @IsDate()
-  readonly fecha: string;
+  readonly fecha: Date;
 }
