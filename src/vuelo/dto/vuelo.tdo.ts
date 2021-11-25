@@ -1,5 +1,6 @@
 import { Type } from 'class-transformer';
 import { IsDate, IsNotEmpty, IsString } from 'class-validator';
+import { PasajeroInterface } from 'src/common/interfaces/pasajero.interface';
 export class VueloTDO {
   @IsNotEmpty()
   @IsString()
@@ -14,4 +15,5 @@ export class VueloTDO {
   @Type(() => Date)
   @IsDate()
   readonly fecha: Date;
+  //readonly pasajeros: PasajeroInterface;
 }

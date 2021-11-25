@@ -31,4 +31,16 @@ export class VueloService {
     await this.model.findByIdAndDelete(id);
     return await oldVuelo;
   }
+  async createPasajero(
+    vueloId: string,
+    pasajeroId: string,
+  ): Promise<VueloInterface> {
+    return await this.model
+      .findByIdAndUpdate(
+        vueloId,
+        { $addToSet: { pasajeros: pasajeroId } },
+        { new: true },
+      )
+      .populate('pasajeros');
+  }
 }

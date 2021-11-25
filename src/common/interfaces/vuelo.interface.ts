@@ -5,5 +5,5 @@ export interface VueloInterface extends Document {
   avion: string;
   destino: string;
   fecha: Date;
-  pasajeros: PasajeroInterface;
+  pasajeros: PasajeroInterface[];
 }
