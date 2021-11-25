@@ -12,7 +12,9 @@ import {
 import { VueloService } from './vuelo.service';
 import { VueloTDO } from './dto/vuelo.tdo';
 import { PasajeroService } from 'src/pasajero/pasajero.service';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('vuelos')
 @Controller('api/v1/vuelo')
 export class VueloController {
   constructor(
