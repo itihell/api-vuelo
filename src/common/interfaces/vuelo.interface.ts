@@ -1,3 +1,4 @@
+import { ClimnaInterface } from './clima.interface';
 import { PasajeroInterface } from './pasajero.interface';
 
 export interface VueloInterface extends Document {
@@ -6,4 +7,5 @@ export interface VueloInterface extends Document {
   destino: string;
   fecha: Date;
   pasajeros: PasajeroInterface[];
+  clima: ClimnaInterface[];
 }
