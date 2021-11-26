@@ -8,13 +8,17 @@ import {
   Param,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { VueloService } from './vuelo.service';
 import { VueloTDO } from './dto/vuelo.tdo';
 import { PasajeroService } from 'src/pasajero/pasajero.service';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { JwtAuthGuard } from '../auth/guards/jwt.auth.guard';
 
 @ApiTags('vuelos')
+@ApiBearerAuth()
+@UseGuards(JwtAuthGuard)
 @Controller('api/v1/vuelo')
 export class VueloController {
   constructor(

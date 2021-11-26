@@ -30,6 +30,17 @@ export class UserService {
     return await this.model.findById(id);
   }
 
+  async findByUserName(username: string) {
+    return await this.model.findOne({ username });
+  }
+
+  async checkPassword(
+    password: string,
+    passwordUser: string,
+  ): Promise<boolean> {
+    return await bcrypt.compare(password, passwordUser);
+  }
+
   async update(id: string, campos: UserDTO): Promise<UserInterface> {
     const hash = await this.hasPassword(campos.password);
     const user = { ...campos, password: hash };
